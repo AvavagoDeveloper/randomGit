@@ -1,0 +1,172 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+	int choice1, choice2, choice3, quanti = 0, orderAmount;
+	double  order = 0, total = 0, vatTotal = 0, seniorTotal = 0, tentativeTotal = 0, casualSneakers = 1499.99, runningShoes = 2799.99, loafers = 1799.99, dressShoes = 1899.99, sandals = 899.99, leatherBoots = 2999.99, ruggedBoots = 2399.99, waterProofBoots = 1299.99, slipOns = 899.99, platForms = 1199.99, heels = 1399.99, balletFlats = 999.99, socks = 199.99, insoles = 250.00, cleaner = 230.00, polish = 140.00, laces = 100.00, brush = 140.00, pads = 90.00, horn = 70.00;
+	const double vat = 0.12, discount = 0.20;
+	char senior;
+
+		cout << "*****************************************************************" << endl << "                             SHOEMAR                       " << endl << "*****************************************************************" << endl << endl;
+		cout << "Hello! Welcome to Shoemar!" << endl << "========================================" << endl << "               CATEGORIES               " << endl << "========================================" << endl << "1 - Footwear | 2 - Accessories" << endl;
+	while (true) {
+		cout << endl;
+		cout << "Enter option number: ";
+		cin >> choice1;
+		cout << endl;
+
+		if (choice1 == 1) {
+			cout << " 1 - Casual Sneakers--------PHP1499.99 |  2 - Running Shoes-----PHP2799.99" << endl;
+			cout << " 3 - Loafers----------------PHP1799.99 |  4 - Dress Shoes-------PHP1899.99" << endl;
+			cout << " 5 - Sandals-----------------PHP899.99 |  6 - Leather Boots-----PHP2999.99" << endl;
+			cout << " 7 - Rugged Boots-----------PHP2399.99 |  8 - Waterproof Boots--PHP1299.99" << endl;
+			cout << " 9 - Slip-ons----------------PHP899.99 | 10 - Platforms---------PHP1199.99" << endl;
+			cout << "11 - Heels------------------PHP1399.99 | 12 - Ballet Flats-------PHP999.99" << endl << endl;
+			cout << "How many items would you like to buy?: ";
+			cin >> orderAmount;
+
+			for (int i = 1; i <= orderAmount; i++) {
+
+
+				while (true) {
+					cout << "Enter option number of order #" << i;
+					cin >> choice2;
+
+
+					if (choice2 == 1) {
+						order += 1499.99;
+						break;
+					}
+					else if (choice2 == 2) {
+						order += 2799.99;
+						break;
+					}
+					else if (choice2 == 3) {
+						order += 1799.99;
+						break;
+					}
+					else if (choice2 == 4) {
+						order += 1899.99;
+						break;
+					}
+					else if (choice2 == 5) {
+						order += 899.99;
+						break;
+					}
+					else if (choice2 == 6) {
+						order += 2999.99;
+						break;
+					}
+					else if (choice2 == 7) {
+						order += 2399.99;
+						break;
+					}
+					else if (choice2 == 8) {
+						order += 1299.99;
+						break;
+					}
+					else if (choice2 == 9) {
+						order += 899.99;
+						break;
+					}
+					else if (choice2 == 10) {
+						order += 1199.99;
+						break;
+					}
+					else if (choice2 == 11) {
+						order += 1399.99;
+						break;
+					}
+					else if (choice2 == 12) {
+						order += 999.99;
+						break;
+					}
+					else {
+						cout << "Invalid Option!" << endl;
+					}
+				}
+				cout << "Enter purchase quantity: ";
+				cin >> quanti;
+				tentativeTotal += order * quanti;
+				break;
+			}
+		}
+		else if (choice1 == 2) {
+			cout << " 1 - Socks-------------------PHP199.99 |  2 - Insoles------------PHP250.00" << endl;
+			cout << " 3 - Shoe Cleaner------------PHP230.00 |  4 - Shoe Polish--------PHP140.00" << endl;
+			cout << " 5 - Shoelaces---------------PHP100.00 |  6 - Shoe Brush---------PHP140.00" << endl;
+			cout << " 7 - Shoe Pads----------------PHP90.00 |  8 - Shoe Horn-----------PHP70.00" << endl;
+			while (true) {
+				cout << "Enter option number: " << endl;
+				cin >> choice3;
+				if (choice3 == 1) {
+					order += 199.99;
+					break;
+				}
+				else if (choice3 == 2) {
+					order += 250.00;
+					break;
+				}
+				else if (choice3 == 3) {
+					order += 230.00;
+					break;
+				}
+				else if (choice3 == 4) {
+					order += 140.00;
+					break;
+				}
+				else if (choice3 == 5) {
+					order += 100.00;
+					break;
+				}
+				else if (choice3 == 6) {
+					order += 140.00;
+					break;
+				}
+				else if (choice3 == 7) {
+					order += 90.00;
+					break;
+				}
+				else if (choice3 == 8) {
+					order += 70.00;
+					break;
+				}
+				else {
+					cout << "Invalid Option!" << endl;
+				}
+			}
+			cout << "Enter purchase quantity: ";
+			cin >> quanti;
+			tentativeTotal += order * quanti;
+			break;
+		}
+		else {
+			cout << "Invalid Option!" << endl;
+		}
+	}
+	while (true) {
+	cout << "Are you a snior citizen? (Y/N): ";
+	cin >> senior;
+		if (senior == 'y' || senior == 'Y') {
+			seniorTotal += tentativeTotal * discount; //No VAT since senior citizens are VAT-exempt
+			total += tentativeTotal - seniorTotal;
+			break;
+		}
+		else if (senior == 'n' || senior == 'N') {
+			vatTotal += tentativeTotal * vat;
+			total += tentativeTotal + vatTotal;
+			break;
+		}
+		else {
+			cout << "Invalid Option!" << endl << endl;
+		}
+	}
+	cout << "***********************";
+	cout << "    SHOEMAR RECEIPT    ";
+	cout << "***********************";
+	cout << endl;
+	cout << "Your total is: PHP" << total;
+	return 0;
+}
